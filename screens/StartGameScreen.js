@@ -8,13 +8,15 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
+
 import Card from "../components/Card";
 import Colors from "../constants/colors";
 import Input from "../components/Input";
+import NumberContainer from "../components/NumberContainer";
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
-  const [confirmed, setConfirmed] = useState(false);  
+  const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
 
   const numberInputHandler = (inputText) => {
@@ -25,24 +27,42 @@ const StartGameScreen = (props) => {
     setConfirmed(false);
   };
   const confirmInputHandler = () => {
-      const chosenNumber = parseInt(enteredValue);
-      if (isNaN(chosenNumber) || chosenNumber <=0 || chosenNumber > 99 || chosenNumber===undefined){
-        Alert.alert('Invalid number!', 'Number has to be a number between 1 and 99.',[{
-          text: 'Okay',
-          style: 'default',
-          onPress: resetInputHandler,
-        }]);  
-        return;
-      };
-      setConfirmed(true);
-      setEnteredValue('');
-      setSelectedNumber(chosenNumber);
+    const chosenNumber = parseInt(enteredValue);
+    if (
+      isNaN(chosenNumber) ||
+      chosenNumber <= 0 ||
+      chosenNumber > 99 ||
+      chosenNumber === undefined
+    ) {
+      Alert.alert(
+        "Invalid number!",
+        "Number has to be a number between 1 and 99.",
+        [
+          {
+            text: "Okay",
+            style: "default",
+            onPress: resetInputHandler,
+          },
+        ]
+      );
+      return;
+    }
+    setConfirmed(true);
+    setEnteredValue("");
+    setSelectedNumber(chosenNumber);
+    Keyboard.dismiss();
   };
 
   let confirmedOutput;
 
-  if(confirmed) {
-      confirmedOutput = <Text>Choosen Number: {selectedNumber}</Text>
+  if (confirmed) {
+    confirmedOutput = (
+      <Card style={styles.summaryContainer}>
+        <Text>You selected</Text>
+        <NumberContainer>{selectedNumber}</NumberContainer>
+        <Button title={"START GAME"} />
+      </Card>
+    );
   }
 
   return (
@@ -109,6 +129,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 15,
+  },
+  summaryContainer: {
+    marginTop: 25,
+    alignItems: 'center',
+    
   },
   button: {
     width: 100,
