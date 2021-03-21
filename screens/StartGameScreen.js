@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Button,
   TouchableWithoutFeedback,
@@ -42,7 +41,7 @@ const StartGameScreen = (props) => {
         "Number has to be a number between 1 and 99.",
         [
           {
-            text: "Okay",
+            text: "Ok",
             style: "default",
             onPress: resetInputHandler,
           },
