@@ -9,7 +9,10 @@ import {
   Alert,
 } from "react-native";
 
+
 import Card from "../components/Card";
+import BodyText from "../components/BodyText";
+import TitleText from "../components/TitleText";
 import Colors from "../constants/colors";
 import Input from "../components/Input";
 import NumberContainer from "../components/NumberContainer";
@@ -58,7 +61,7 @@ const StartGameScreen = (props) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
-        <Text>You selected</Text>
+        <BodyText>You selected</BodyText>
         <NumberContainer>{selectedNumber}</NumberContainer>
         <Button title={"START GAME"} onPress={() => props.onStartGame(selectedNumber)} />
       </Card>
@@ -72,9 +75,9 @@ const StartGameScreen = (props) => {
       }}
     >
       <View style={styles.screen}>
-        <Text style={styles.title}>Start a new Game!</Text>
+        <TitleText style={styles.title}>Start a new Game!</TitleText>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <BodyText>Select a Number</BodyText>
           <Input
             styles={styles.input}
             keyboardType={"number-pad"}
