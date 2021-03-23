@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  Dimensions
 } from "react-native";
 
 
@@ -123,13 +124,14 @@ const styles = StyleSheet.create({
     fontFamily: 'open-sans-bold',
   },
   inputContainer: {
-    width: 300,
-    maxWidth: "80%",
+    width: '80%',
+    minWidth: 300,
+    maxWidth: '95%',
     alignItems: "center",
   },
   buttonContainer: {
     flexDirection: "row",
-    width: "100%",
+    width: '80%',
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 15,
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
     
   },
   button: {
-    width: 100,
+    width: Dimensions.get('window').width / 3,
   },
   input: {
     width: 50,
