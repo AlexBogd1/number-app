@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
   Image,
   Dimensions,
   ScrollView,
@@ -43,16 +42,16 @@ const GameOverScreen = (props) => {
 
 const styles = StyleSheet.create({
   scroll: {
-    textAlign: 'center',
-    alignContent: 'center',
-    width: '100%',
-  },  
+    textAlign: "center",
+    alignContent: "center",
+    width: "100%",
+  },
   screen: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 30,
-    width: '100%',
+    width: "100%",
   },
   imageContainer: {
     width: Dimensions.get("window").width * 0.5,
